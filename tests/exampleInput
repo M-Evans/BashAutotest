@@ -1,5 +1,4 @@
-bash
-PS1="testing> "
+PS1="PROMPT> "
 ls
 touch a
 ls -l
