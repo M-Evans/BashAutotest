@@ -1,20 +1,21 @@
-script out.script
-bin/rshell
-bin/rshell
-help
+bash
+PS1="testing> "
 ls
-ls -a
-make
-echo "hello"
-#exit
-;;;;;;;;;;;;;;exit;;;;;;;;;;;
-bin/rshell
-exit
-bin/rshell
-exit 1 -a RED
-bin/rshell
-true && echo success || exit
-false && exit || echo fail
-true && exit
-bin/rshell
-false || exit
+touch a
+ls -l
+echo "Tuesday!" > a
+ls -l
+# now for comments
+rm a
+ls -l
+
+true && echo success || echo fail
+false && echo success || echo fail
+
+true && echo past true and
+false && echo past false and
+
+true || echo past true or
+false || echo past false or
+
+exit # bash
