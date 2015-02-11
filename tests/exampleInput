@@ -1,0 +1,20 @@
+script out.script
+bin/rshell
+bin/rshell
+help
+ls
+ls -a
+make
+echo "hello"
+#exit
+;;;;;;;;;;;;;;exit;;;;;;;;;;;
+bin/rshell
+exit
+bin/rshell
+exit 1 -a RED
+bin/rshell
+true && echo success || exit
+false && exit || echo fail
+true && exit
+bin/rshell
+false || exit
