@@ -7,7 +7,7 @@
 
 usage() {
   cat<<EOF
-Usage: $0 pathToTestFile
+Usage: $(basename $0) pathToTestFile
 EOF
 }
 
@@ -48,13 +48,13 @@ yieldLines() {
 
     # debug:
     #echo >&2
-    #ps --ppid $CUR_PID >&2
-    #ps --ppid $CUR_PID | awk 'NR==3 { print $1 }' >&2
-    #ps --ppid $(ps --ppid $CUR_PID | awk 'NR==3 { print $1 }') >&2
+    #ps --sort=start_time --ppid $CUR_PID >&2
+    #ps --sort=start_time --ppid $CUR_PID | awk 'NR==3 { print $1 }' >&2
+    #ps --ppid $(ps --sort=start_time --ppid $CUR_PID | awk 'NR==3 { print $1 }') >&2
 
 
-    if ps --ppid $(ps --ppid $CUR_PID | awk 'NR==3 { print $1 }') >/dev/null
-    then  # there is a subprocess in the test cases
+    if ps --ppid $(ps --sort=start_time --ppid $CUR_PID | awk 'NR==3 { print $1 }') >/dev/null
+    then  # there is a subprocess from the test cases
       echo ${p} >/proc/$CUR_PID/fd/1
     fi
     echo ${p} # goes to stdin
@@ -65,5 +65,4 @@ yieldLines() {
 echo ================================================================================
 yieldLines | bash -i
 echo ================================================================================
-
 
