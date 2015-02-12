@@ -15,7 +15,8 @@
 #   itself.
 #
 # Basically, if you run this and it looks terrible, you're
-# using the wrong shell.
+# using the wrong shell for this project. See bashi3.sh
+# for info on how to fix it.
 
 
 yieldLines() {
@@ -24,11 +25,12 @@ yieldLines() {
     echo \# $i
     usleep 150000
   done
+  echo "# if you can see the numbers,"
+  echo "# the script will work! "
 }
 
 
 echo ================================================================================
 yieldLines | bash -i
 echo ================================================================================
-
 
