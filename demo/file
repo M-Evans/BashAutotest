@@ -1,0 +1,23 @@
+PS1="PROMPT> "
+ls
+touch a
+ls -l
+echo "Tuesday! " > a
+ls -l
+# now for comments
+rm a
+ls -l
+
+true && echo success || echo fail
+false && echo success || echo fail
+
+true && echo passed true and
+false && echo passed false and
+
+true || echo passed true or
+false || echo passed false or
+
+./rshell
+pwd
+echo "hello"
+ls --color=auto
