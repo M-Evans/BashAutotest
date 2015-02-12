@@ -3,32 +3,27 @@
 # To run this test, you must be in the demo directory
 # the "file" should already be included
 
-# Fix Trial 1 (file 2 in bash -i series)
+# Fix Trial 2 (file 3 in bash -i series)
 # Purpose:
 # * Assuming bash is entirely unhelpful with relaying stdin,
 #   find a way to fix it
 # 
 # Flaws:
-# * artifacts left in output by less intelligent
-#   subshells (bash doesn't have this problem). Only
-#   occurs when the commands run a subshell.
-#
-# * Any subshell being run must properly handle the ';'
-#   command connector.
-#
-# * Executes an extra command for each command in the
-#   test file
-#
+# * After cursory tests, appears to work well
+# 
 # Conclusion:
-# * Don't use this method
+# * If you're using bash v3.2.25(1)-release, use this
+#   method
 
 
+CMD_PID=$$
 
 yieldLines() {
   while read p
   do # $p is the line
     usleep 100000
-    echo "echo '${p}' ; ${p}"
+    echo ${p} >/proc/$CMD_PID/fd/1
+    echo ${p}
   done < file
 }
 
