@@ -30,7 +30,7 @@ then
 fi
 
 
-runningRshells=($(pidof rshell))
+CUR_PID=$$
 
 
 getSecond() {
@@ -38,20 +38,26 @@ getSecond() {
 }
 
 
+# TODO: implement pausing
 yieldLines() {
   while read p
   do # $p is the line
+    # TODO: command line arg:
     usleep 100000
-    #bash -ic "read -p \"PAUSED\! \" var"
-    if [ ! -z "$(pidof rshell)" ]
-    then # rshell is running. Input doesn't naturally get printed
-      echo ${p} > /proc/$(pidof rshell)/fd/1
+
+
+    # debug:
+    #echo >&2
+    #ps --ppid $CUR_PID >&2
+    #ps --ppid $CUR_PID | awk 'NR==3 { print $1 }' >&2
+    #ps --ppid $(ps --ppid $CUR_PID | awk 'NR==3 { print $1 }') >&2
+
+
+    if ps --ppid $(ps --ppid $CUR_PID | awk 'NR==3 { print $1 }') >/dev/null
+    then  # there is a subprocess in the test cases
+      echo ${p} >/proc/$CUR_PID/fd/1
     fi
-    if [ ! -z "$(pidof script)" ]
-    then
-      echo ${p} > /proc/$(getSecond $(pidof script))/fd/0
-    fi
-    echo "$p" # goes to stdin
+    echo ${p} # goes to stdin
   done < $TEST_CASE_FILE
 }
 
