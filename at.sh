@@ -4,17 +4,6 @@
 # 
 # $0 pathToTestFile
 #
-# Warning: Does not automatically generate a script.
-# You'll have to specify that in your input file
-# e.g. 
-#
-# script scriptName
-# dostuffhere
-#
-# Note that you don't need to tell it to exit. When the
-# testFile is done being read, it'll send the EOF char,
-# which will stop the script automatically.
-
 
 usage() {
   cat<<EOF
@@ -41,7 +30,6 @@ then
 fi
 
 
-runningScripts=($(pidof script))
 runningRshells=($(pidof rshell))
 
 
