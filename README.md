@@ -33,8 +33,8 @@ bat pathToTestFile
     Pretty much anything you can type.
 * How do I know if it will work on my system?
 
-    Run ``make sanetest``! If you can see the comments, it'll work. If you don't see any comments, and there are a lot of prompts printing, it will not work for you. See demo/bashi3.sh for info on how to fix the problem.
+    Run ``make sanetest``! If you can see the comments, it'll work. If you don't see any comments, and there are a lot of prompts printing, it will not work for you. See ``demo/bashi3.sh`` for info on how to fix the problem.
 * What if one of the lines of the testFile starts another program that's still around for the next line of input?
 
-    This is how the program is tailored for the CS100 course; it's assumed that the subprocess does **not** print stdin back to the screen, and takes care of it manually. If the subprocess does print stdin back to the screen, it will be printed twice.
+    This is how the program is tailored for the CS100 course; it's assumed that the subprocess does **not** print stdin back to the screen, and takes care of it manually. If the subprocess *does* print stdin back to the screen, it will be printed twice.
 
