@@ -17,7 +17,11 @@ false && echo passed false and
 true || echo passed true or
 false || echo passed false or
 
-./rshell
+if [ -x ./rshell ]
+then
+./rshell &
+fi
+fg
 help
 ls
 pwd
