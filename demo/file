@@ -16,3 +16,10 @@ false && echo passed false and
 
 true || echo passed true or
 false || echo passed false or
+
+# the case of a subshell
+bash
+ls
+pwd
+echo "Hello" | grep H
+ps
