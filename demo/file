@@ -16,8 +16,3 @@ false && echo passed false and
 
 true || echo passed true or
 false || echo passed false or
-
-./rshell
-pwd
-echo "hello"
-ls --color=auto
