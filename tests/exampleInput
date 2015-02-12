@@ -11,11 +11,11 @@ ls -l
 true && echo success || echo fail
 false && echo success || echo fail
 
-true && echo past true and
-false && echo past false and
+true && echo passed true and
+false && echo passed false and
 
-true || echo past true or
-false || echo past false or
+true || echo passed true or
+false || echo passed false or
 
 ./rshell
 help
@@ -25,7 +25,3 @@ echo "success"
 #exit
 exit
 echo Back to bash
-
-
-
-
