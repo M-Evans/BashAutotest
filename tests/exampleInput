@@ -2,7 +2,7 @@ PS1="PROMPT> "
 ls
 touch a
 ls -l
-echo "Tuesday!" > a
+echo "Tuesday! " > a
 ls -l
 # now for comments
 rm a
@@ -17,4 +17,15 @@ false && echo past false and
 true || echo past true or
 false || echo past false or
 
-exit # bash
+./rshell
+help
+ls
+pwd
+echo "success"
+#exit
+exit
+echo Back to bash
+
+
+
+
