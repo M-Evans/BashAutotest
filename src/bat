@@ -53,7 +53,7 @@ yieldLines() {
     #ps --ppid $(ps --sort=start_time --ppid $CUR_PID | awk 'NR==3 { print $1 }') >&2
 
 
-    if ps --ppid $(ps --sort=start_time --ppid $CUR_PID | awk 'NR==3 { print $1 }') >/dev/null
+    if ps --ppid $(ps --sort=start_time --ppid $CUR_PID | awk 'NR==3 { print $1 }') &>/dev/null
     then  # there is a subprocess from the test cases
       echo ${p} >/proc/$CUR_PID/fd/1
     fi
