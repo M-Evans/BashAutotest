@@ -1,0 +1,17 @@
+echo "Tuesday! "
+ls -l
+# now for comments
+
+true && echo success || echo fail
+false && echo success || echo fail
+
+true && echo passed true and
+false && echo passed false and
+
+true || echo passed true or
+false || echo passed false or
+
+pwd
+echo "success"
+#exit
+exit

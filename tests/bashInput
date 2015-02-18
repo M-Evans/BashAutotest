@@ -17,15 +17,8 @@ false && echo passed false and
 true || echo passed true or
 false || echo passed false or
 
-if [ -x ./rshell ]
-then
-./rshell &
-fi
-fg
-help
 ls
 pwd
 echo "success"
 #exit
 exit
-echo Back to bash
