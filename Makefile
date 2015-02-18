@@ -27,10 +27,16 @@ uninstall:
 	@chmod +x src/uninstall.sh
 	@src/uninstall.sh $(INSTALL_DIR) $(INSTALL_NAME)
 
-test:
+testbash:
 	@chmod +x $(SRC_DIR)/$(INSTALL_NAME)
 	@clear
-	$(SRC_DIR)/$(INSTALL_NAME) tests/exampleInput
+	$(SRC_DIR)/$(INSTALL_NAME) bash tests/bashInput
+
+testrshell:
+	@chmod +x $(SRC_DIR)/$(INSTALL_NAME)
+	@clear
+	@if [ ! -x bin/rshell ] ; then echo "ERROR: bin/rshell is not executable"; fi; exit 0
+	$(SRC_DIR)/$(INSTALL_NAME) rshell tests/rshellInput
 
 sanetest:
 	@chmod +x demo/bashi1.sh
