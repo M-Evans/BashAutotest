@@ -2,67 +2,154 @@
 
 # How to use:
 # 
-# $0 pathToTestFile
+# $0 mode pathToTestFile [delayInMilliseconds]
 #
+# mode should be either "rshell", "bash",
+# or the path to an executable
+#
+# play pig in class today
+
+
+red() {
+  echo -en "\033[1;31m"
+  echo -n "$@"
+  echo -en "\033[0m"
+}
+
 
 usage() {
-  cat<<EOF
-Usage: $(basename $0) pathToTestFile
+  cat >&2 <<EOF
+Usage: $(basename $0) mode pathToTestFile [delayInMilliseconds]
+mode should be one of "rshell", "bash", or the path
+to an executable
 EOF
 }
 
 
-# one argument
-if [ $# != 1 ] 
+# 2 or 3 arguments
+if [[ $# < 2 || $# > 3 ]]
 then
+  red "Error: "
+  echo "improper number of parameters" >&2
   usage
   exit 1
 fi
 
-TEST_CASE_FILE=$1
+MODE=$1
+TEST_CASE_FILE=$2
+U_DELAY=${3:-100000}  # either $3 or (if not passed) the
+                      # default of 100000 uSeconds (1/10
+                      # of a second)
 
-# that argument must be a file
-if [ ! -f $TEST_CASE_FILE ]
+# test if $1 is a valid mode (rshell, bash, or executable)
+if [[ "$MODE" != "rshell" && "$MODE" != "bash" && ! -x "$MODE" ]]
 then
-  echo "Error: $1 not a file"
+  red "Error: "
+  echo "improper mode" >&2
+  usage
+  exit 1
+fi
+
+# for rshell mode, make sure there's something to execute
+if [[ "$MODE" == "rshell" && ! -x bin/rshell ]]
+then
+  red "Error: "
+  echo "bin/rshell cannot be executed" >&2
+  usage
+  exit 1
+fi
+
+# $2 must be a file
+if [[ ! -f "$TEST_CASE_FILE" ]]
+then
+  red "Error: "
+  echo "$TEST_CASE_FILE not a file" >&2
+  usage
+  exit 1
+fi
+
+# $3 must be exclusively numbers
+if [[ ! "$U_DELAY" =~ ^[0-9]+$ ]]
+then
+  red "Error: "
+  echo "\"$U_DELAY\" is not a valid number of microseconds" >&2
   usage
   exit 1
 fi
 
 
+# grab the current PID
 CUR_PID=$$
-
-
-getSecond() {
-  echo $2
-}
 
 
 # TODO: implement pausing
 yieldLines() {
-  while read p
+  while read -u 3 p
   do # $p is the line
-    # TODO: command line arg:
-    usleep 100000
+
+    usleep $U_DELAY
+
+    # most recently started process:
+    # TODO: get the last rshell instance to send the signal to
+    if [[ ${p} == "" ]]
+    then
+      # print "^Z"
+      echo "^Z" >/proc/$CUR_PID/fd/1
+
+      # kill -s SIGTSTP $(ps --sort=start_time --ppid $CUR_PID | awk 'NR==3 { print $1 }')
+
+      
+      # send SIGTSTP to subprocess responsible for executing commands
+      kill -s SIGTSTP\
+          $(ps --sort=start_time --ppid\
+          $(ps --sort=start_time --ppid $CUR_PID\
+          | awk 'NR==3 { print $1 }') | awk 'NR==2 { print $1 }')
 
 
-    # debug:
-    #echo >&2
-    #ps --sort=start_time --ppid $CUR_PID >&2
-    #ps --sort=start_time --ppid $CUR_PID | awk 'NR==3 { print $1 }' >&2
-    #ps --ppid $(ps --sort=start_time --ppid $CUR_PID | awk 'NR==3 { print $1 }') >&2
-
-
-    if ps --ppid $(ps --sort=start_time --ppid $CUR_PID | awk 'NR==3 { print $1 }') &>/dev/null
-    then  # there is a subprocess from the test cases
-      echo ${p} >/proc/$CUR_PID/fd/1
+      
+      continue
     fi
-    echo ${p} # goes to stdin
-  done < $TEST_CASE_FILE
+
+    if [[ ${p} == "" ]]
+    then
+      # print "^C"
+      echo "^C" >/proc/$CUR_PID/fd/1
+
+      # send SIGTSTP to subprocess responsible for executing commands
+      kill -s SIGINT\
+          $(ps --sort=start_time --ppid\
+            $(ps --sort=start_time --ppid $CUR_PID\
+            | awk 'NR==3 { print $1 }')\
+          | awk 'NR==2 { print $1 }')
+
+
+      
+      continue
+    fi
+
+
+    if [[ "$MODE" != "bash" ]] # anything other than bash (rshell or possibly homebrew stuff)
+    then
+      echo ${p} >/proc/$CUR_PID/fd/1 # to the screen
+    fi
+
+    echo ${p}
+  done 3<$TEST_CASE_FILE
 }
 
 
+# TODO: multiple test files
 echo ================================================================================
-yieldLines | bash -i
+if [[ "$MODE" == "rshell" ]]
+then
+  yieldLines | bin/rshell
+elif [[ "$MODE" == "bash" ]]
+then
+  yieldLines | bash -i
+else # executable program (non-standard rshell path?)
+  yieldLines | $MODE
+fi
 echo ================================================================================
+
+
 
