@@ -1,3 +1,15 @@
+ls -R /lib
+
+
+exit
+exit # here
+exit
+exit
+exit
+exit
+exit
+exit
+
 PS1="PROMPT> "
 ls
 touch a
@@ -16,13 +28,6 @@ false && echo passed false and
 
 true || echo passed true or
 false || echo passed false or
-
-
-
-
-
-
-
 
 ls
 pwd
