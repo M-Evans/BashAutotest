@@ -1,22 +1,10 @@
-ls -R /lib
-
-
-exit
-exit # here
-exit
-exit
-exit
-exit
-exit
-exit
-
-PS1="PROMPT> "
 ls
 touch a
 ls -l
 echo "Tuesday! " > a
 ls -l
 # now for comments
+cat a
 rm a
 ls -l
 
@@ -32,5 +20,4 @@ false || echo passed false or
 ls
 pwd
 echo "success"
-#exit
 exit
