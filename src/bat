@@ -2,7 +2,7 @@
 
 # How to use:
 # 
-# $0 mode pathToTestFile[s] [delayInMilliseconds]
+# $0 mode testFile[s] [delay]
 #
 # mode should be either "rshell", "bash",
 # or the path to an executable
@@ -18,7 +18,7 @@ red() {
 
 usage() {
   cat >&2 <<EOF
-Usage: $(basename $0) mode pathToTestFile[s] [delayInMilliseconds]
+Usage: $(basename $0) mode testFile[s] [delay]
 mode should be one of "rshell", "bash", or the path
 to an executable
 EOF
