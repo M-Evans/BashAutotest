@@ -95,7 +95,7 @@ yieldLines() {
     if [[ ${line} == "" ]]
     then
       # send SIGTSTP to subprocess responsible for executing commands
-      kill -s SIGTSTP $CHILD_SHELL &>&2
+      kill -s SIGTSTP $CHILD_SHELL >&2 2>&1
       # print "^Z"
       echo "^Z" >/proc/$CUR_PID/fd/1
       continue
@@ -103,7 +103,7 @@ yieldLines() {
     if [[ ${line} == "" ]]
     then
       # send SIGINT to subprocess responsible for executing commands
-      kill -s SIGINT $CHILD_SHELL &>&2
+      kill -s SIGINT $CHILD_SHELL >&2 2>&1
       # print "^C"
       echo "^C" >/proc/$CUR_PID/fd/1
       continue
