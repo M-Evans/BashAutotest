@@ -16,47 +16,43 @@ help:
 
 install:
 	@echo "Installing..."
-	@chmod +x src/install.sh
-	@if [ ! -e "$(SRC_DIR)$(NAME)" ] \
+	@if [ ! -e "$(SRC_DIR)$(NAME)" ]; \
 	then \
-	  echo "Failure. Where did the repo's executable go?" \
-	  exit 1 \
+	  echo "Failure. Where did the repo's executable go?"; \
+	  exit 1;\
 	fi
 	@chmod +x "$(SRC_DIR)$(NAME)"
-	@if [ ! -e "$(INSTALL_DIR)$(NAME)"] \
-	then \
-	  cp "$(SRC_DIR)$(NAME)" "$(INSTALL_DIR)$(NAME)" >/dev/null 2>&1 \
+	@if [ ! -e "$(INSTALL_DIR)$(NAME)" ]; then \
+	  cp "$(SRC_DIR)$(NAME)" "$(INSTALL_DIR)$(NAME)" &>/dev/null \
 	    && echo "Success" \
-	    || { echo "Failure (can't write there?)"; exit 1; } \
+	    || { echo "Failure (can't write there?)"; exit 1; }; \
 	else \
-	  echo "Failure (already exists?)" \
-	  exit 1 \
+	  echo "Failure (already installed?)"; \
+	  exit 1; \
 	fi
 
 reinstall:
 	@echo "Reinstalling..."
-	@chmod +x src/install.sh
-	@if [ ! -e "$(SRC_DIR)$(NAME)" ] \
+	@if [ ! -e "$(SRC_DIR)$(NAME)" ]; \
 	then \
-	  echo "Failure. Where did the repo's executable go?" \
-	  exit 1 \
+	  echo "Failure. Where did the repo's executable go?"; \
+	  exit 1;\
 	fi
 	@chmod +x "$(SRC_DIR)$(NAME)"
-	@cp -f "$(SRC_DIR)$(NAME)" "$(INSTALL_DIR)$(NAME)" >/dev/null 2>&1 \
+	@cp "$(SRC_DIR)$(NAME)" "$(INSTALL_DIR)$(NAME)" &>/dev/null \
 	  && echo "Success" \
-	  || { echo "Failure (can't write there?)"; exit 1; } 
+	  || { echo "Failure (can't write there?)"; exit 1; }; \
 
 uninstall:
 	@echo "Uninstalling..."
-	@chmod +x src/uninstall.sh
-	@if [ -f "$(INSTALL_DIR)$(NAME)" ] \
+	@if [ -f "$(INSTALL_DIR)$(NAME)" ]; \
 	then \
 	  rm -f "$(INSTALL_DIR)$(NAME)" &>/dev/null \
 	    && echo "Success!" \
-	    || { echo "Failure (can't delete there?)"; exit 1; } \
+	    || { echo "Failure (can't delete there?)"; exit 1; }; \
 	else \
-	  echo "Failure (doesn't exist?)" \
-	  exit 1 \
+	  echo "Failure (not installed?)"; \
+	  exit 1; \
 	fi
 
 testBash:
