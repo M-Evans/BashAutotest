@@ -85,6 +85,7 @@ fi
 
 # TODO: implement pausing
 yieldLines() {
+  CHILD_SHELL=$(ps --sort=start_time --ppid $CUR_PID | awk 'NR==3 { print $1 }')
   while read -u 3 line
   do
 
@@ -94,9 +95,7 @@ yieldLines() {
     if [[ ${line} == "" ]]
     then
       # send SIGTSTP to subprocess responsible for executing commands
-      kill -s SIGTSTP \
-          $(ps --sort=start_time --ppid $CUR_PID \
-          | awk 'NR==3 { print $1 }')
+      kill -s SIGTSTP $CHILD_SHELL >&2
       # print "^Z"
       echo "^Z" >/proc/$CUR_PID/fd/1
       continue
@@ -104,9 +103,7 @@ yieldLines() {
     if [[ ${line} == "" ]]
     then
       # send SIGINT to subprocess responsible for executing commands
-      kill -s SIGINT \
-          $(ps --sort=start_time --ppid $CUR_PID \
-          | awk 'NR==3 { print $1 }')
+      kill -s SIGINT $CHILD_SHELL >&2
       # print "^C"
       echo "^C" >/proc/$CUR_PID/fd/1
       continue
