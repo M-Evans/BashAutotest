@@ -56,11 +56,11 @@ uninstall:
 	fi
 
 testBash:
-	@chmod +x $(SRC_DIR)/$(INSTALL_NAME)
-	$(SRC_DIR)/$(INSTALL_NAME) bash $(BASH_TEST) $(TEST_DELAY)
+	@chmod +x $(SRC_DIR)$(NAME)
+	$(SRC_DIR)$(NAME) bash $(BASH_TEST) $(TEST_DELAY)
 
 testRshell:
-	@chmod +x $(SRC_DIR)/$(INSTALL_NAME)
-	$(SRC_DIR)/$(INSTALL_NAME) rshell $(RSHELL_TEST) $(TEST_DELAY)
+	@chmod +x $(SRC_DIR)$(NAME)
+	$(SRC_DIR)$(NAME) rshell $(RSHELL_TEST) $(TEST_DELAY)
 
 
