@@ -19,5 +19,5 @@ bat mode testFile[s] [delay]
 If you would like to learn more about the features, check out the tutorial folder's readme
 
 ### Bugs
-* Bash doesn't send signals to subprocesses in interactive non-user tty mode, so signals specified in test files, when sent to bash, do not work.
+* Because of the way bash is called, it doesn't send signals to subprocesses. The result is that signals specified in test files, when testing in bash mode, do not work. This is not a problem for rshells that properly handle signals.
 
