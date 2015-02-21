@@ -53,7 +53,6 @@ When ``rshell`` exits, the rest of the tests in the file will not get passed. In
 
 ```
 tests-+
-      |-experiment
       |-execCommands
       |-execConnectors
       |-execExit_part1
