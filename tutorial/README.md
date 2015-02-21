@@ -165,7 +165,7 @@ fg
 ^C
 ```
 
-An important thing to point out is that ``^C`` is not simply a caret next to captial C. [It is the ascii value representing the end of text.](http://academic.evergreen.edu/projects/biophysics/technotes/program/ascii_ctrl.htm) This gets interpreted by ``bash`` to send SIGINT to the currently running program, and your ``rshell`` must do the same. To put a ``^C`` in your test file in vim so you can test your signal handling, enter visual mode and hit ``Ctrl+v`` then ``Ctrl+c``. Similarly for ``^Z``, enter visual mode and hit ``Ctrl+v`` then ``Ctrl+z``.
+An important thing to point out is that ``^C`` is not simply a caret next to captial C. [It is the ascii value representing the end of text.](http://academic.evergreen.edu/projects/biophysics/technotes/program/ascii_ctrl.htm) This gets interpreted by ``bash`` to send SIGINT to the currently running program, and your ``rshell`` must do the same. To put a ``^C`` in your test file in vim so you can test your signal handling, enter visual mode and hit ``Ctrl+v`` then ``Ctrl+c``. Similarly for ``^Z``, enter visual mode and hit ``Ctrl+v`` then ``Ctrl+z``. The special control characters should be on their own lines for ``bat`` to send the corresponding signal to your program. For instance, a line containing ``cat^C`` would not work.
 
 
 
