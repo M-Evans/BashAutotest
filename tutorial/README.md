@@ -77,13 +77,13 @@ Here's part of what an example test file named ``lsExampleTest`` would look like
 
 ```bash
 # test regular ls
-ls
+bin/ls
 # test ls -a
-ls -a
+bin/ls -a
 # test ls -l
-ls -l
+bin/ls -l
 # test ls -R
-ls -R
+bin/ls -R
 ```
 
 ### ``hw2``
