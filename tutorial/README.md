@@ -34,7 +34,7 @@ false || echo false
 
 An important thing to note about your ``rshell`` is that it must exit when there is no more input to be had. If you're using ``cin``, ``cin.good()`` will return true if there isn't a problem with the ``cin`` stream. When ``bat`` is finished feeding lines of input to your ``rshell``, ``cin.good()`` will return false.
 
-Another requirement for [hw0](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) is that you implement the ``exit`` command. Here's and example of what the test file for ``bat`` would look like:
+Another requirement for [hw0](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) is that you implement the ``exit`` command. Here's an example test file for ``exit`` in ``rshell``:
 
 ```bash
 # test commented exit
