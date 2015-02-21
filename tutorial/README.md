@@ -1,12 +1,12 @@
 # How to use ``bat``
 
 ## Contents
-1. [``bat`` and hw0](#hw0)
-2. [``bat`` and hw1](#hw1)
-3. [``bat`` and hw2](#hw2)
-4. [``bat`` and hw3](#hw3)
+1. [``bat`` and ``hw0``](#hw0)
+2. [``bat`` and ``hw1``](#hw1)
+3. [``bat`` and ``hw2``](#hw2)
+4. [``bat`` and ``hw3``](#hw3)
 
-### hw0
+### ``hw0``
 In [hw0](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you are required to create a basic shell that accepts commands and executes them. Additionally, you must implement ``&&``, ``||``, and ``;`` as connectors. Here's how you would test this using ``bat``:
 
 ```bash
@@ -65,14 +65,14 @@ tests-+
 
 Then running ``bat rshell tests/exec`` will run your ``rshell`` with the ``execCommands``, ``execConnectors``, ``execExit_part1``, and ``execExit_part2`` files. ``bat`` will take the first part of the path you specify, and match it with everything that starts with that phrase. ``bat`` will fail on directories, however, so make sure it doesn't expand to include a directory.
 
-### hw1
-In [hw1](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to implement the ``ls`` command. Here's how you would test hw1 using ``bat``:
+### ``hw1``
+In [``hw1``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to implement the ``ls`` command. Here's how you would test [``hw1``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) using ``bat``:
 
 ```bash
 bat bash tests/ls
 ```
 
-The difference between this and ``hw0`` is the mode you're testing in. If you're testing ``rshell``, use the ``rshell`` testing mode. If you'd like to run your tests through ``bash``, use ``bash`` mode. For this assignment, you don't need to use ``rshell`` to test. You may use ``rshell`` to test it if you'd like by running ``bat rshell tests/ls`` instead, but it's not required.
+The difference between this and [``hw0``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) is the mode you're testing in. If you're testing ``rshell``, use the ``rshell`` testing mode. If you'd like to run your tests through ``bash``, use ``bash`` mode. For this assignment, you don't need to use ``rshell`` to test. You may use ``rshell`` to test it if you'd like by running ``bat rshell tests/ls`` instead, but it's not required.
 
 Here's part of what an example test file named ``lsExampleTest`` would look like for this assignment:
 
@@ -87,8 +87,8 @@ ls -l
 ls -R
 ```
 
-### hw2
-In [hw2](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to implement several different piping features that use ``<``, ``>``, ``>>``, and ``|``. Here's how you would test hw2 using ``bat``:
+### ``hw2``
+In [``hw2``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to implement several different piping features that use ``<``, ``>``, ``>>``, and ``|``. Here's how you would test [``hw2``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) using ``bat``:
 
 ```bash
 bat rshell tests/piping
@@ -123,8 +123,8 @@ rm output
 rm pipeTest
 ```
 
-### hw3
-In [hw3](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to execute commands by searching the ``PATH`` environment variable, catch and handle when the user types ``Ctrl+c``, and implement ``cd``. The extra credit is given for handling when the user types ``CTRL+z``, as well as implementing ``fg`` and ``bg``.
+### ``hw3``
+In [``hw3``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to execute commands by searching the ``PATH`` environment variable, catch and handle when the user types ``Ctrl+c``, and implement ``cd``. The extra credit is given for handling when the user types ``CTRL+z``, as well as implementing ``fg`` and ``bg``. Here's how you would test [``hw3``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) using ``bat``:
 
 ```bash
 bat rshell tests/signals
