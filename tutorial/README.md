@@ -71,7 +71,7 @@ In [``hw1``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're
 bat bash tests/ls
 ```
 
-The difference between this and [``hw0``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) is the mode you're testing in. If you're testing ``rshell``, use the ``rshell`` testing mode. If you'd like to run your tests through ``bash``, use ``bash`` mode. For this assignment, you don't need to use ``rshell`` to test. You may use ``rshell`` to test it if you'd like by running ``bat rshell tests/ls`` instead, but it's not required.
+The main difference between this and [``hw0``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) is the mode you're testing in. If you're testing ``rshell``, use the ``rshell`` testing mode. If you'd like to run your tests through ``bash``, use ``bash`` mode. For this assignment, you don't need to use ``rshell`` to test. You may use ``rshell`` to test it if you'd like by running ``bat rshell tests/ls`` instead, but it's not required.
 
 Here's part of what an example test file named ``lsExampleTest`` would look like for this assignment:
 
@@ -87,7 +87,7 @@ ls -R
 ```
 
 ### ``hw2``
-In [``hw2``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to implement several different piping features that use ``<``, ``>``, ``>>``, and ``|``. Here's how you would test [``hw2``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) using ``bat``:
+In [``hw2``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to implement several different piping and redirection features that use ``<``, ``>``, ``>>``, and ``|`` as part of their syntax. Here's how you would test [``hw2``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) using ``bat``:
 
 ```bash
 bat rshell tests/piping
@@ -165,7 +165,7 @@ fg
 ^C
 ```
 
-An important thing to point out is that ``^C`` is not simply a caret next to captial C. [It is the ascii value representing the end of text.](http://academic.evergreen.edu/projects/biophysics/technotes/program/ascii_ctrl.htm) This gets interpreted by ``bash`` to send SIGINT to your program, and your ``rshell`` must do the same. To put a ``^C`` in your test file in vim so you can test your signal handling, enter visual mode then hit ``Ctrl+v`` then ``Ctrl+c``. Similarly for ``^Z``, enter visual mode then hit ``Ctrl+v`` then ``Ctrl+z``.
+An important thing to point out is that ``^C`` is not simply a caret next to captial C. [It is the ascii value representing the end of text.](http://academic.evergreen.edu/projects/biophysics/technotes/program/ascii_ctrl.htm) This gets interpreted by ``bash`` to send SIGINT to the currently running program, and your ``rshell`` must do the same. To put a ``^C`` in your test file in vim so you can test your signal handling, enter visual mode and hit ``Ctrl+v`` then ``Ctrl+c``. Similarly for ``^Z``, enter visual mode and hit ``Ctrl+v`` then ``Ctrl+z``.
 
 
 
