@@ -39,6 +39,6 @@ For the extra credit, you will need to handle ``^Z``, which represents sending S
 
 The control characters must be on a line by themselves in order for ``cs100-runtests`` to send the corresponding signal to the running program.
 
-Control signals can be sent in bash mode, but bash does not relay them to the currently running program.
+Signals can be sent in bash mode, but bash does not relay them to the currently running program.
 
 
