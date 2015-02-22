@@ -8,7 +8,7 @@
 
 
 ### ``hw0``
-In [hw0](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you are required to create a basic shell that accepts commands and executes them. Additionally, you must implement ``&&``, ``||``, and ``;`` as connectors. Here's how you would run your tests using ``cs100-runtests``: ``cs100-runtests rshell tests/exec``. [This](tests/execExampleTest1) is what a test file would look like, and [this](tests/exampleOutput) is what the corresponding output would be.
+In [hw0](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you are required to create a basic shell that accepts commands and executes them. Additionally, you must implement ``&&``, ``||``, and ``;`` as connectors. Here's how you would run your tests using ``cs100-runtests``: ``cs100-runtests&nbsp;rshell&nbsp;tests/exec``. [This](tests/execExampleTest1) is what a test file would look like, and [this](tests/exampleOutput) is what the corresponding output would be.
 
 ``cs100-runtests`` accepts 3 parameters.
   1. The mode you'd like to run the tests in. It can either be "rshell", "bash", or the path to an executable. In this case, you'll be using "rshell" mode.
