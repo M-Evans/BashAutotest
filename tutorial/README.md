@@ -1,174 +1,44 @@
-# How to use ``bat``
+# How to use ``cs100-runtests``
 
 ## Contents
-1. [``bat`` and ``hw0``](#hw0)
-2. [``bat`` and ``hw1``](#hw1)
-3. [``bat`` and ``hw2``](#hw2)
-4. [``bat`` and ``hw3``](#hw3)
+1. [``cs100-runtests`` and ``hw0``](#hw0)
+2. [``cs100-runtests`` and ``hw1``](#hw1)
+3. [``cs100-runtests`` and ``hw2``](#hw2)
+4. [``cs100-runtests`` and ``hw3``](#hw3)
+
 
 ### ``hw0``
-In [hw0](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you are required to create a basic shell that accepts commands and executes them. Additionally, you must implement ``&&``, ``||``, and ``;`` as connectors. Here's how you would test this using ``bat``:
+In [hw0](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you are required to create a basic shell that accepts commands and executes them. Additionally, you must implement ``&&``, ``||``, and ``;`` as connectors. Here's how you would run your tests using ``cs100-runtests``: ``cs100-runtests rshell tests/exec``. [This](tests/execExampleTest1) is what a test file would look like, and [this](tests/exampleOutput) is what the corresponding output would be.
 
-```bash
-bat rshell tests/exec
-```
+``cs100-runtests`` accepts 3 parameters.
+  1. The mode you'd like to run the tests in. It can either be "rshell", "bash", or the path to an executable. In this case, you'll be using "rshell" mode.
+  2. The tests you'd like to run. This parameter undergoes [filename expansion](https://www.gnu.org/software/bash/manual/html_node/Filename-Expansion.html). If the parameter is a directory, all of the contents of the directory are used as tests. If a filename returned from filename expansion is a directory, all of the contents of that directory are used as tests.
+  3. The number of microseconds to wait between feeding commands to the shell chosen by mode. This parameter is optional, and defaults to 100,000 (1/10th of a second).
 
-When using ``bat``, you first specify the mode you would like to use, then specify the file that holds the tests you'd like to run. ``tests/exec`` fron the previous exemple would look something like the following:
+An important thing to note about your ``rshell`` is that it must exit when there is no more input to be had. If you're using ``cin``, ``cin.good()`` will return ``true`` if there isn't a problem with the ``cin`` stream. When ``cs100-runtests`` is finished feeding lines of input to your ``rshell``, ``cin.good()`` will return ``false``.
 
-```bash
-# this is a comment
-# testing one command:
-ls
-# testing with one parameter:
-ls -a
-# testing with two parameters:
-ls -a -l
-# testing with three parameters:
-ls -a -l -h
+Another requirement for [hw0](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) is that you implement the ``exit`` command. [Here's](tests/execExampleTest2) an example test file for ``exit`` in ``rshell``.
 
-# test &&
-true && echo true
-# test ||
-false || echo false
-```
+When ``rshell`` exits, the rest of the tests in the file will not get passed. Instead, try specifying multiple files to ``cs100-runtests`` using the rules for the second parameter.
 
-An important thing to note about your ``rshell`` is that it must exit when there is no more input to be had. If you're using ``cin``, ``cin.good()`` will return true if there isn't a problem with the ``cin`` stream. When ``bat`` is finished feeding lines of input to your ``rshell``, ``cin.good()`` will return false.
-
-Another requirement for [hw0](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) is that you implement the ``exit`` command. Here's an example test file for ``exit`` in ``rshell``:
-
-```bash
-# test commented exit
-#exit
-# test spaces before commented exit
-    #exit
-# exit with parameters
-exit with parameters and -flags and stuff
-
-# none of this stuff will get passed!
-foo -a
-bar "hello world"
-```
-
-When ``rshell`` exits, the rest of the tests in the file will not get passed. Instead, there's a way to specify multiple files. If the tests directory looks like this:
-
-```
-tests-+
-      |-execCommands
-      |-execConnectors
-      |-execExit_part1
-      |-execExit_part2
-      |-experiment
-      |-filexecStuff
-      `-hello
-```
-
-Then running ``bat rshell tests/exec`` will run your ``rshell`` with the ``execCommands``, ``execConnectors``, ``execExit_part1``, and ``execExit_part2`` files. ``bat`` will take the first part of the path you specify, and match it with everything that starts with that phrase. ``bat`` will fail on directories, however, so make sure it doesn't expand to include a directory.
 
 ### ``hw1``
-In [``hw1``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to implement the ``ls`` command. Here's how you would test [``hw1``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) using ``bat``:
+In [``hw1``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to implement the ``ls`` command. Here's how you would test [``hw1``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) using ``cs100-runtests``: ``cs100-runtests bash tests/ls``. [This](tests/lsExampleTest) is an example test file for [``hw1``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules).
 
-```bash
-bat bash tests/ls
-```
-
-The main difference between this and [``hw0``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) is the mode you're testing in. If you're testing ``rshell``, use the ``rshell`` testing mode. If you'd like to run your tests through ``bash``, use ``bash`` mode. For this assignment, you don't need to use ``rshell`` to test. You may use ``rshell`` to test it if you'd like by running ``bat rshell tests/ls`` instead, but it's not required.
-
-Here's part of what an example test file named ``lsExampleTest`` would look like for this assignment:
-
-```bash
-# test regular ls
-bin/ls
-# test ls -a
-bin/ls -a
-# test ls -l
-bin/ls -l
-# test ls -R
-bin/ls -R
-```
+The main difference between [``hw1``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) and [``hw0``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) is the mode you're testing in. If you're testing ``rshell``, use the ``rshell`` testing mode. If you'd like to run your tests through ``bash``, use ``bash`` mode. For this assignment, you don't need to use ``rshell`` to test. You may use ``rshell`` to test it if you'd like by running ``cs100-runtests rshell tests/ls`` instead, but it's not required for this assignment.
 
 ### ``hw2``
-In [``hw2``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to implement several different piping and redirection features that use ``<``, ``>``, ``>>``, and ``|`` as part of their syntax. Here's how you would test [``hw2``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) using ``bat``:
-
-```bash
-bat rshell tests/piping
-```
-
-Here's part of what an example test file named ``pipingExampleTest`` would look like for this assignment:
-
-```bash
-# test output
-ls > file
-echo "hello world!" > input
-
-# test input
-cat < file
-cat < input
-
-# test appending output
-ls > app
-ls >> app
-ls >> app
-cat app
-
-#test piping
-echo "this is a pipe test" > pipeTest
-cat < pipeTest | grep -v Hello | grep pipe > output && cat output
-
-# cleanup
-rm app
-rm file
-rm input
-rm output
-rm pipeTest
-```
+In [``hw2``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to implement several different piping and redirection features that use ``<``, ``>``, ``>>``, and ``|`` as part of their syntax. Here's how you would test [``hw2``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) using ``cs100-runtests``: ``cs100-runtests rshell tests/piping``. [This](tests/pipingExampleTest) is an example test for [``hw2``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules).
 
 ### ``hw3``
-In [``hw3``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to execute commands by searching the ``PATH`` environment variable, catch and handle when the user types ``Ctrl+c``, and implement ``cd``. The extra credit is given for handling when the user types ``CTRL+z``, as well as implementing ``fg`` and ``bg``. Here's how you would test [``hw3``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) using ``bat``:
+In [``hw3``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to execute commands by searching the ``PATH`` environment variable, catch and handle when the user types ``Ctrl+c``, and implement ``cd``. The extra credit is given for handling when the user types ``CTRL+z``, as well as implementing ``fg`` and ``bg``. Here's how you would test [``hw3``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) using ``cs100-runtests``: ``cs100-runtests rshell tests/signals``. [This](tests/signalsExampleTest) is an example test for [``hw3``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules).
 
-```bash
-bat rshell tests/signals
-```
+In the example test file, I put "^C" in plaintext so you could see it. For your actual tests, do not do this. Instead, you must put the [ASCII end of text character.](http://en.wikipedia.org/wiki/End-of-text_character) [Ctrl+C, used for interrupting a running program, overlaps with this character.](http://en.wikipedia.org/wiki/Control-C) To place an ASCII end of text character in vim, enter insert mode and hit ``Ctrl+v`` then ``Ctrl+c``.
 
-Here's part of what an example test file named ``signalsExampleTest`` would look like for this assignment:
+For the extra credit, you will need to handle ``^Z``, which represents sending SIGTSTP to your shell. It overlaps with the [ASCII substitute character.](http://en.wikipedia.org/wiki/Substitute_character) To have ``cs100-runtests`` send SIGTSTP to your ``rshell``, you must put the ASCII substitute character in the test file. To place and ASCII substitute character in vim, enter insert mode and hit ``Ctrl+v`` then ``Ctrl+z``.
 
-```bash
-# test cd
-pwd
-cd ..
-pwd
-cd rshell
-pwd
+The control characters must be on a line by themselves in order for ``cs100-runtests`` to send the corresponding signal to the running program.
 
-# commands from different directories
-# from /usr/bin:
-md5sum --help >/dev/null
-# from /usr/sbin:
-ifconfig >/dev/null
-# from /bin:
-ls >/dev/null
-# from /sbin:
-mkfs --help >/dev/null
-
-# test Ctrl+C
-cat
-^C
-
-# test Ctrl+C again
-ls -R /
-^C
-
-# a case for some extra credit:
-cat
-^Z
-ps
-fg
-^C
-```
-
-An important thing to point out is that ``^C`` is not simply a caret next to captial C. [It is the ascii value representing the end of text.](http://academic.evergreen.edu/projects/biophysics/technotes/program/ascii_ctrl.htm) This gets interpreted by ``bash`` to send SIGINT to the currently running program, and your ``rshell`` must do the same. To put a ``^C`` in your test file in vim so you can test your signal handling, enter visual mode and hit ``Ctrl+v`` then ``Ctrl+c``. Similarly for ``^Z``, enter visual mode and hit ``Ctrl+v`` then ``Ctrl+z``. The special control characters should be on their own lines for ``bat`` to send the corresponding signal to your program. For instance, a line containing ``cat^C`` would not work.
-
-
-
-
+Control signals can be sent in bash mode, but bash does not relay them to the currently running program.
 
 
