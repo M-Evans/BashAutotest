@@ -8,7 +8,7 @@
 
 
 ### ``hw0``
-In [hw0](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you are required to create a basic shell that accepts commands and executes them. Additionally, you must implement ``&&``, ``||``, and ``;`` as connectors. Here's how you would run your tests: ``cs100-runtests rshell tests/exec``. _[This is what a test file would look like](tests/execExampleTest1)_, and _[this is what the corresponding output would be.](tests/exampleOutput)_
+In [hw0](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you are required to create a basic shell that accepts commands and executes them. Additionally, you must implement ``&&``, ``||``, and ``;`` as connectors. Here's how you would run your tests: ``cs100-runtests rshell tests/exec``. <span style="text-decoration:underline;">[This is what a test file would look like](tests/execExampleTest1)</span>, and <span style="text-decoration:underline;">[this is what the corresponding output would be.](tests/exampleOutput)</span>
 
 ``cs100-runtests`` accepts 3 parameters.
   1. The mode you'd like to run the tests in. It can either be "rshell", "bash", or the path to an executable. In this case, you'll be using "rshell" mode.
@@ -17,21 +17,21 @@ In [hw0](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you are re
 
 An important thing to note about your ``rshell`` is that it must exit when there is no more input to be had. If you're using ``cin``, ``cin.good()`` will return ``true`` if there isn't a problem with the ``cin`` stream. When ``cs100-runtests`` is finished feeding lines of input to your ``rshell``, ``cin.good()`` will return ``false``.
 
-Another requirement for [hw0](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) is that you implement the ``exit`` command. _[Here's an example test file for ``exit`` in ``rshell``.](tests/execExampleTest2)_
+Another requirement for [hw0](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) is that you implement the ``exit`` command. <span style="text-decoration:underline;">[Here's an example test file for ``exit`` in ``rshell``.](tests/execExampleTest2)</span>
 
 When ``rshell`` exits, the rest of the tests in the file will not get passed. Instead, try specifying multiple files to ``cs100-runtests`` using the rules for the second parameter.
 
 
 ### ``hw1``
-In [``hw1``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to implement the ``ls`` command. Here's how you would test [``hw1``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules): ``cs100-runtests bash tests/ls``. _[This is an example test file for hw1.](tests/lsExampleTest)_
+In [``hw1``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to implement the ``ls`` command. Here's how you would test [``hw1``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules): ``cs100-runtests bash tests/ls``. <span style="text-decoration:underline;">[This is an example test file for hw1.](tests/lsExampleTest)</span>
 
 The main difference between testing [``hw1``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) and [``hw0``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) is the mode you're testing in. If you're testing ``rshell``, use the ``rshell`` testing mode. If you'd like to run your tests through ``bash``, use ``bash`` mode. For this assignment, you don't need to use ``rshell`` to test. You may use ``rshell`` to test it if you'd like by running ``cs100-runtests rshell tests/ls`` instead, but it's not required for this assignment.
 
 ### ``hw2``
-In [``hw2``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to implement several different piping and redirection features that use ``<``, ``>``, ``>>``, and ``|`` as part of their syntax. Here's how you would test [``hw2``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules): ``cs100-runtests rshell tests/piping``. _[This is an example test for hw2.](tests/pipingExampleTest)_
+In [``hw2``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to implement several different piping and redirection features that use ``<``, ``>``, ``>>``, and ``|`` as part of their syntax. Here's how you would test [``hw2``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules): ``cs100-runtests rshell tests/piping``. <span style="text-decoration:underline;">[This is an example test for hw2.](tests/pipingExampleTest)</span>
 
 ### ``hw3``
-In [``hw3``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to execute commands by searching the ``PATH`` environment variable, catch and handle when the user types ``Ctrl+c``, and implement ``cd``. The extra credit is given for handling when the user types ``CTRL+z``, as well as implementing ``fg`` and ``bg``. Here's how you would test [``hw3``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules): ``cs100-runtests rshell tests/signals``. _[This is an example test for hw3.](tests/signalsExampleTest)_
+In [``hw3``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to execute commands by searching the ``PATH`` environment variable, catch and handle when the user types ``Ctrl+c``, and implement ``cd``. The extra credit is given for handling when the user types ``CTRL+z``, as well as implementing ``fg`` and ``bg``. Here's how you would test [``hw3``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules): ``cs100-runtests rshell tests/signals``. <span style="text-decoration:underline;">[This is an example test for hw3.](tests/signalsExampleTest)</span>
 
 In the example test file, I put "^C" in plaintext so you could see it. For your actual tests, do not do this. Instead, you must put the [ASCII end of text character.](http://en.wikipedia.org/wiki/End-of-text_character) [Ctrl+C, used for interrupting a running program, overlaps with this character.](http://en.wikipedia.org/wiki/Control-C) To place an ASCII end of text character in vim, enter insert mode and hit ``Ctrl+v`` then ``Ctrl+c``.
 
