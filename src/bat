@@ -105,12 +105,12 @@ yieldLines() {
     # prints to fd 1 of the current process
     if [[ "$MODE" != "bash" ]]
     then
-      echo ${line} >/proc/$CUR_PID/fd/1
+      echo "${line}" >/proc/$CUR_PID/fd/1
     fi
     
     # this goes to stdout, which becomes stdin of whatever it is
     # piped to
-    echo ${line}
+    echo "${line}"
 
 
   # open $1 as fd 3
