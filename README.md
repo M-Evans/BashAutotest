@@ -6,7 +6,7 @@
 ### Installation
 ```bash
 git clone https://github.com/m-evans/bashAutotest.git
-cd bashAutotest.git
+cd bashAutotest
 sudo make install
 ```
 To see the installation options, run ``make`` or ``make help``. You can modify the installation directory, install name, and other options in the Makefile.
