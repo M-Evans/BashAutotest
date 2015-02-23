@@ -2,7 +2,7 @@ NAME=bat
 SRC_DIR=src/
 INSTALL_DIR=/usr/local/bin/
 BASH_TEST=tests/bashInput
-RSHEL_TEST=tests/bashInput
+RSHELL_TEST=tests/bashInput
 TEST_DELAY=700000
 
 help:
