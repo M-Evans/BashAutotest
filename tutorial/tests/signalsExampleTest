@@ -17,15 +17,16 @@ mkfs --help >/dev/null
 
 # test Ctrl+C
 cat
-^C
+
 
 # test Ctrl+C again
 ls -R /
-^C
+
 
 # a case for some extra credit:
 cat
-^Z
+
 ps
 fg
-^C
+
+
