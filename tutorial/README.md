@@ -1,6 +1,8 @@
 # How to use ``cs100-runtests``
 
 ## What is this?
+This is a guide is designed to help familiarize you with the ``cs100-runtests`` utility.
+It is broken up into four sections, one for each homework assignment.
 
 
 ### hw0
