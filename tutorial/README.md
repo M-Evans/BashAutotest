@@ -36,24 +36,24 @@ Similarly, ``cin.fail()`` will return ``true`` when there's no more input.
 
 ### hw1
 In [hw1](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to implement the ``ls`` command.
-Here's how you would test hw1: ``cs100-runtests bash tests/ls``.
-The file [tests/lsExampleTest](tests/lsExampleTest) contains an incomplete list of test cases for hw1.
+Here's how you would run your tests for hw1: ``cs100-runtests bash tests/ls``.
+[tests/lsExampleTest](tests/lsExampleTest) contains a set of example test cases for hw1.
 
 The main difference between testing hw1 and hw0 is the shell you're running your tests through.
-If you'd like to use ``rshell``, pass the path to your ``rshell`` executable.
-If you'd like to run your tests through ``bash``, pass in ``bash`` instead.
+If you'd like to run your tests through ``rshell``, pass the path to your ``rshell`` executable as the second argument.
+If you'd like to run your tests through ``bash``, pass ``bash`` instead.
 For this assignment, you are not required to run your tests through ``rshell``.
 
 ### hw2
 In [hw2](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to implement several different piping and redirection features that use ``<``, ``>``, ``>>``, and ``|`` as part of their syntax.
-Here's how you would test hw2: ``cs100-runtests rshell tests/piping``.
-This file ([tests/pipingExampleTest](tests/pipingExampleTest))
+Here's how you would run your tests for hw2: ``cs100-runtests rshell tests/piping``.
+[tests/pipingExampleTest](tests/pipingExampleTest) contains a set of example test cases for hw2.
 
 ### hw3
 In [hw3](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to execute commands by searching the ``PATH`` environment variable, catch and handle when the user types ``Ctrl+c``, and implement ``cd``.
 The extra credit is given for handling when the user types ``CTRL+z``, as well as implementing ``fg`` and ``bg``.
-Here's how you would test hw3: ``cs100-runtests rshell tests/signals``.
-[This is an example test for hw3.](tests/signalsExampleTest)
+Here's how you would run your tests for hw3: ``cs100-runtests rshell tests/signals``.
+[tests/signalsExampleTest](tests/signalsExampleTest) contains a set of example test cases for hw3.
 
 In the example test file, I put ``^C`` in plaintext so you could see it.
 For your actual tests, do not do this.
