@@ -27,7 +27,7 @@ Another requirement for hw0 is that you implement the ``exit`` command.
 There is a problem, however.
 When ``rshell`` is finished executing, none of the remaining tests will be passed.
 To test exit multiple times, you need to specify multiple test files.
-[tests/execExampleTest3](tests/execExampleTest3) contains an example of a distinct test for ``exit`` in ``rshell``.
+[tests/execExampleTest3](tests/execExampleTest3) contains an example of another distinct test for ``exit`` in ``rshell``.
 
 If, in your tests, you do not cause ``rshell`` to stop with ``exit`` then it must finish when there is no more input to be had.
 If you're using ``cin``, ``cin.good()`` will return ``true`` if there isn't a problem with the ``cin`` stream.
