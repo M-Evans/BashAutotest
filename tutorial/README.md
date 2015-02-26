@@ -27,11 +27,11 @@ If you're using ``cin``, ``cin.good()`` will return ``true`` if there isn't a pr
 When ``cs100-runtests`` is finished feeding lines of input to your ``rshell``, ``cin.good()`` will return ``false``.
 
 Another requirement for hw0 is that you implement the ``exit`` command.
-[tests/execExampleTest2](tests/execExampleTest2) Is one example s an example test file for ``exit`` in ``rshell``.]()
-Here's how you would run your tests for hw0: ``cs100-runtests bin/rshell tests/exec``.
-
-When ``rshell`` exits, the rest of the tests in the file will not get passed.
-Instead, try specifying multiple files to ``cs100-runtests`` using the rules for the second parameter.
+[tests/execExampleTest2](tests/execExampleTest2) is one example of a test file for ``exit`` in ``rshell``.
+There is a problem, however.
+When ``rshell`` is finished executing, none of the remaining tests will be passed.
+To test exit multiple times, you need to specify multiple test files.
+[tests/execExampleTest3](tests/execExampleTest3) contains an example of a distinct test for ``exit`` in ``rshell``.
 
 
 ### hw1
