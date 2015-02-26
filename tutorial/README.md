@@ -12,7 +12,7 @@ Here's how you would run your tests for hw0: ``cs100-runtests bin/rshell tests/e
 
 ``cs100-runtests`` accepts 3 parameters.
   1. The shell you'd like to run the tests in.
-  For instance, it can either be ``bin/rhsell`` or ``bash``.
+  For example, it can be ``bin/rshell``, ``bash``, or ``sh``.
   In the case of hw0, you'll be passing ``bin/rshell`` to ``cs100-runtests``.
   2. The tests you'd like to run.
   This parameter undergoes [filename expansion](https://www.gnu.org/software/bash/manual/html_node/Filename-Expansion.html).
