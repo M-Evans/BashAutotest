@@ -8,7 +8,7 @@ It is broken up into four sections, one for each homework assignment.
 In [hw0](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you are required to create a basic shell that accepts commands and executes them.
 Additionally, you must implement ``&&``, ``||``, and ``;`` as connectors.
 Here's how you would run your tests for hw0: ``cs100-runtests bin/rshell tests/exec``.
-[tests/execExampleTest](tests/execExampleTest1) shows what a test file would look like and [tests/exampleOutput](tests/exampleOutput) shows what the corresponding output would be.
+[tests/execExampleTest1](tests/execExampleTest1) shows what a test file would look like and [tests/execExampleTest1_Output](tests/execExampleTest1_Output) shows what the corresponding output would be.
 
 ``cs100-runtests`` accepts 3 parameters.
   1. The shell you'd like to run the tests in.
@@ -18,16 +18,17 @@ Here's how you would run your tests for hw0: ``cs100-runtests bin/rshell tests/e
   This parameter undergoes [filename expansion](https://www.gnu.org/software/bash/manual/html_node/Filename-Expansion.html).
   If the parameter is a directory, all of the contents of the directory are used as tests.
   If a filename returned from filename expansion is a directory, all of the contents of that directory are used as tests.
-  3. The number of microseconds to wait between feeding commands to the shell chosen by mode.
+  3. The number of microseconds to wait between feeding commands to the chosen shell.
   This parameter is optional, and defaults to ``100000`` (1/10th of a second).
-  It is useful to set this if commands in a test file take longer than 1/10th of a second to finish.
+  It is useful to set this to a larger value if commands in a test file take longer than 1/10th of a second to finish.
 
 An important thing to note about your ``rshell`` is that it must exit when there is no more input to be had.
 If you're using ``cin``, ``cin.good()`` will return ``true`` if there isn't a problem with the ``cin`` stream.
 When ``cs100-runtests`` is finished feeding lines of input to your ``rshell``, ``cin.good()`` will return ``false``.
 
-Another requirement for [hw0](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) is that you implement the ``exit`` command.
-[Here's an example test file for ``exit`` in ``rshell``.](tests/execExampleTest2)
+Another requirement for hw0 is that you implement the ``exit`` command.
+[tests/execExampleTest2](tests/execExampleTest2) Is one example s an example test file for ``exit`` in ``rshell``.]()
+Here's how you would run your tests for hw0: ``cs100-runtests bin/rshell tests/exec``.
 
 When ``rshell`` exits, the rest of the tests in the file will not get passed.
 Instead, try specifying multiple files to ``cs100-runtests`` using the rules for the second parameter.
@@ -36,13 +37,12 @@ Instead, try specifying multiple files to ``cs100-runtests`` using the rules for
 ### hw1
 In [``hw1``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to implement the ``ls`` command.
 Here's how you would test [``hw1``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules): ``cs100-runtests bash tests/ls``.
-[This is an example test file for hw1.](tests/lsExampleTest)
+The file [tests/lsExampleTest](tests/lsExampleTest) contains an incomplete list of test cases for hw1.
 
-The main difference between testing [``hw1``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) and [``hw0``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) is the mode you're testing in.
-If you're testing ``rshell``, use the ``rshell`` testing mode.
-If you'd like to run your tests through ``bash``, use ``bash`` mode.
-For this assignment, you don't need to use ``rshell`` to test.
-You may use ``rshell`` to test it if you'd like by running ``cs100-runtests rshell tests/ls`` instead, but it's not required for this assignment.
+The main difference between testing [``hw1``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) and [``hw0``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules) is the shell you're running your tests through.
+If you'd like to use ``rshell``, pass the path to your ``rshell`` executable.
+If you'd like to run your tests through ``bash``, pass in ``bash`` instead.
+For this assignment, you are not required to run your tests through ``rshell``.
 
 ### hw2
 In [``hw2``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to implement several different piping and redirection features that use ``<``, ``>``, ``>>``, and ``|`` as part of their syntax.
@@ -69,6 +69,6 @@ To place an ASCII substitute character in vim, enter insert mode and hit ``Ctrl+
 
 The control characters must be on a line by themselves in order for ``cs100-runtests`` to send the corresponding signal to the running program.
 
-Signals can be sent in bash mode, but bash does not relay them to the currently running program.
+Signals can be sent to ``bash``, but ``bash`` does not relay them to the currently running program.
 
 
