@@ -22,10 +22,6 @@ Here's how you would run your tests for hw0: ``cs100-runtests bin/rshell tests/e
   This parameter is optional, and defaults to ``100000`` (1/10th of a second).
   It is useful to set this to a larger value if commands in a test file take longer than 1/10th of a second to finish.
 
-An important thing to note about your ``rshell`` is that it must exit when there is no more input to be had.
-If you're using ``cin``, ``cin.good()`` will return ``true`` if there isn't a problem with the ``cin`` stream.
-When ``cs100-runtests`` is finished feeding lines of input to your ``rshell``, ``cin.good()`` will return ``false``.
-
 Another requirement for hw0 is that you implement the ``exit`` command.
 [tests/execExampleTest2](tests/execExampleTest2) is one example of a test file for ``exit`` in ``rshell``.
 There is a problem, however.
@@ -33,6 +29,10 @@ When ``rshell`` is finished executing, none of the remaining tests will be passe
 To test exit multiple times, you need to specify multiple test files.
 [tests/execExampleTest3](tests/execExampleTest3) contains an example of a distinct test for ``exit`` in ``rshell``.
 
+If, in your tests, you do not cause ``rshell`` to stop with ``exit`` then it must finish when there is no more input to be had.
+If you're using ``cin``, ``cin.good()`` will return ``true`` if there isn't a problem with the ``cin`` stream.
+When ``cs100-runtests`` is finished feeding lines of input to your ``rshell``, ``cin.good()`` will return ``false``.
+Similarly, ``cin.fail()`` will return ``true`` when there's no more input.
 
 ### hw1
 In [``hw1``](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to implement the ``ls`` command.
