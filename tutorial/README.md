@@ -17,7 +17,8 @@ Here's how you would run your tests for hw0: ``cs100-runtests bin/rshell tests/e
   2. The tests you'd like to run.
   This parameter undergoes [filename expansion](https://www.gnu.org/software/bash/manual/html_node/Filename-Expansion.html).
   If the parameter is a directory, all of the contents of the directory are used as tests.
-  If a filename returned from filename expansion is a directory, all of the contents of that directory are used as tests.
+  All terms returned from filename expansion are used as tests.
+  If one of the terms is a directory, all of the contents of that directory are used as tests.
   3. The number of microseconds to wait between feeding commands to the chosen shell.
   This parameter is optional, and defaults to ``100000`` (1/10th of a second).
   It is useful to set this to a larger value if commands in a test file take longer than 1/10th of a second to finish.
