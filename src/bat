@@ -1,5 +1,8 @@
 #/bin/bash
 
+# Written by Michael Evans in February 2015 
+# Released under MIT
+
 # This script takes a shell, a test file, and (optionally)
 # a delay as parameters and runs the test files in the
 # given shell with the delay between commands.
