@@ -16,7 +16,6 @@ Here's how you would run your tests for hw0: ``cs100-runtests bin/rshell tests/e
   In the case of hw0, you'll be passing ``bin/rshell`` to ``cs100-runtests``.
   2. The tests you'd like to run.
   This parameter undergoes [filename expansion](https://www.gnu.org/software/bash/manual/html_node/Filename-Expansion.html).
-  If the parameter is a directory, all of the contents of the directory are used as tests.
   All terms returned from filename expansion are used as tests.
   If one of the terms is a directory, all of the contents of that directory are used as tests.
   3. The number of microseconds to wait between feeding commands to the chosen shell.
