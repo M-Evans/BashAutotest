@@ -51,7 +51,7 @@ Here's how you would run your tests for hw2: ``cs100-runtests rshell tests/pipin
 
 ### hw3
 In [hw3](https://github.com/mikeizbicki/ucr-cs100/#course-schedules), you're required to execute commands by searching the ``PATH`` environment variable, catch and handle when the user types ``Ctrl+c``, and implement ``cd``.
-The extra credit is given for handling when the user types ``CTRL+z``, as well as implementing ``fg`` and ``bg``.
+The extra credit is given for handling when the user types ``Ctrl+z``, as well as implementing ``fg`` and ``bg``.
 Here's how you would run your tests for hw3: ``cs100-runtests rshell tests/signals``.
 [tests/signalsExampleTest](tests/signalsExampleTest) contains a set of example test cases for hw3.
 
