@@ -79,7 +79,7 @@ yieldLines() {
       # send SIGTSTP to subprocess responsible for executing commands
       # (see man kill)
       # (see man 7 signal)
-      kill -s SIGTSTP $CHILD_SHELL >&2 2>&1
+      kill -s SIGTSTP $CHILD_SHELL >/dev/null 2>&1
       # print "^Z" just for looks.
       echo "^Z" >/proc/$CUR_PID/fd/1
       # no actual input to the child shell. got to next line
@@ -92,7 +92,7 @@ yieldLines() {
       # send SIGINT to subprocess responsible for executing commands
       # (see man kill)
       # (see man 7 signal)
-      kill -s SIGINT $CHILD_SHELL >&2 2>&1
+      kill -s SIGINT $CHILD_SHELL >/dev/null 2>&1
       # print "^C" just for looks.
       echo "^C" >/proc/$CUR_PID/fd/1
       # no actual input to the child shell. got to next line
@@ -149,9 +149,9 @@ fi
 
 # test if $1 is a valid executable (rshell, bash, or executable)
 # (see http://mywiki.wooledge.org/BashGuide/Practices#Bash_Tests)
-command -v $COMMAND_SHELL || {
-  red "Error: "
-  echo "\"$COMMAND_SHELL\" cannot be executed" >&2
+command -v $COMMAND_SHELL &>/dev/null || {
+  red "$COMMAND_SHELL"
+  echo ": not found" >&2
   usage
 }
 
@@ -163,8 +163,8 @@ command -v $COMMAND_SHELL || {
 # string. if there is anything except numbers, it will not match.
 if [[ ! "$U_DELAY" =~ ^[0-9]+$ ]]
 then
-  red "Error: "
-  echo "\"$U_DELAY\" is not a valid number of microseconds" >&2
+  red "$U_DELAY"
+  echo ": not a valid number of microseconds" >&2
   usage
 fi
 
@@ -182,16 +182,16 @@ do
     continue
   elif [[ "$file" =~ ^.*/\*$ ]]
   then
-    red "Error: "
     # $file is printed without the last two characters
     # (see man bc)
     # (see http://tldp.org/LDP/abs/html/string-manipulation.html)
-    echo "the folder \"${file:0:$(bc <<< \"${#file}-2\")}\" has no test files"
+    red "${file:0:$(bc <<< \"${#file}-2\")}"
+    echo ": this folder has has no test files"
     continue
   elif [[ ! -f $file ]]
   then
-    red "Error: "
-    echo "$file des not expand to a valid file or directory name" >&2
+    red "$file"
+    echo ": does not expand to a valid file or directory name" >&2
     usage
   fi
 
