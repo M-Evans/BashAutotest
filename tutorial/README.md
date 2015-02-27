@@ -55,7 +55,7 @@ The extra credit is given for handling when the user types ``Ctrl+z``, as well a
 Here's how you would run your tests for hw3: ``cs100-runtests rshell tests/signals``.
 [tests/signalsExampleTest](tests/signalsExampleTest) contains a set of example test cases for hw3.
 
-You must put the [ASCII end of text character](http://en.wikipedia.org/wiki/End-of-text_character) in your test file to send ``SIGINT`` to your ``rshell``.
+You must put the [ASCII end of text character](http://en.wikipedia.org/wiki/End-of-text_character) in the test file to send ``SIGINT`` to your ``rshell``.
 [Ctrl+C, used for interrupting a running program, overlaps with this character.](http://en.wikipedia.org/wiki/Control-C)
 To place an ASCII end of text character in vim, enter insert mode and hit ``Ctrl+v`` then ``Ctrl+c``.
 
