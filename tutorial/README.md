@@ -55,19 +55,16 @@ The extra credit is given for handling when the user types ``CTRL+z``, as well a
 Here's how you would run your tests for hw3: ``cs100-runtests rshell tests/signals``.
 [tests/signalsExampleTest](tests/signalsExampleTest) contains a set of example test cases for hw3.
 
-In the example test file, I put ``^C`` in plaintext so you could see it.
-For your actual tests, do not do this.
-
-Instead, you must put the [ASCII end of text character.](http://en.wikipedia.org/wiki/End-of-text_character) [Ctrl+C, used for interrupting a running program, overlaps with this character.](http://en.wikipedia.org/wiki/Control-C)
+You must put the [ASCII end of text character](http://en.wikipedia.org/wiki/End-of-text_character) in your test file to send ``SIGINT`` to your ``rshell``.
+[Ctrl+C, used for interrupting a running program, overlaps with this character.](http://en.wikipedia.org/wiki/Control-C)
 To place an ASCII end of text character in vim, enter insert mode and hit ``Ctrl+v`` then ``Ctrl+c``.
 
 For the extra credit, you will need to handle ``^Z``, which represents sending ``SIGTSTP`` to your shell.
 It overlaps with the [ASCII substitute character.](http://en.wikipedia.org/wiki/Substitute_character)
 To have ``cs100-runtests`` send ``SIGTSTP`` to your ``rshell``, you must put the ASCII substitute character in the test file.
-
 To place an ASCII substitute character in vim, enter insert mode and hit ``Ctrl+v`` then ``Ctrl+z``.
 
-The control characters must be on a line by themselves in order for ``cs100-runtests`` to send the corresponding signal to the running program.
+These control characters must be on a line by themselves in order for ``cs100-runtests`` to send the corresponding signal.
 
 Signals can be sent to ``bash``, but ``bash`` does not relay them to the currently running program.
 
